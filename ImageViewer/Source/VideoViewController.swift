@@ -58,14 +58,15 @@ class VideoViewController: ItemBaseController<VideoView> {
     override func viewWillAppear(_ animated: Bool) {
         
         UIApplication.shared.beginReceivingRemoteControlEvents()
-        
+         _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.mixWithOthers)
         super.viewWillAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         
         UIApplication.shared.endReceivingRemoteControlEvents()
-        
+       
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategorySoloAmbient, with: AVAudioSessionCategoryOptions.mixWithOthers)
         super.viewWillDisappear(animated)
     }
     
